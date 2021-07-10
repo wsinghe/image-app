@@ -1,0 +1,41 @@
+.right {
+  float: right;
+}
+.image-list {
+  .ui.header {
+    margin-bottom: 30px;
+  }
+}
+.edit-contact {
+  .form {
+    img {
+      width: 400px;
+    }
+  }
+}
+.image-list {
+  table {
+    th:nth-child(1) {
+      width: 5%;
+    }
+    th:nth-child(2) {
+      width: 30%;
+    }
+    th:nth-child(3) {
+      width: 20%;
+    }
+    th:nth-child(4) {
+      width: 30%;
+    }
+    th:nth-child(5) {
+      width: 5%;
+    }
+    img {
+      max-width: 200px !important;
+    }
+  }
+}
+.search {
+  width: 100%;
+  margin-bottom: 20px;
+}
