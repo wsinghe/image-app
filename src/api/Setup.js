@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: "http://images-api.d/"
+    baseURL:process.env.REACT_APP_SERVER_URL
 });

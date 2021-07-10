@@ -12,6 +12,15 @@ function App() {
   const [pagination, setPagination] = useState([]);
   const [page, setPage] = useState(1);
 
+  const isBase64 = (str) => {
+    if (str ==='' || str.trim() ===''){ return false; }
+    try {
+      return btoa(atob(str)) == str;
+    } catch (err) {
+      return false;
+    }
+  }
+
   const retriveImages = async () => {
     const response = await api.get('api/images', { params: { page: page }});
 
@@ -37,6 +46,7 @@ function App() {
   }
 
   const editImageHandler = async (image) => {
+    if(!isBase64(image.image)) image.image = null;
     const response = await api.post('api/images/' + image.id + "?_method=put", image);
 
     if(response.data.success == true) {

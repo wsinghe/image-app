@@ -13,6 +13,15 @@ const convertBase64 = (file) => {
     })
 }
 
+const isBase64 = (str) => {
+    if (str ==='' || str.trim() ===''){ return false; }
+    try {
+        return btoa(atob(str)) == str;
+    } catch (err) {
+        return false;
+    }
+}
+
 class EditImage extends React.Component {
     state = {
         id: this.props.location.state.image.id,
@@ -29,12 +38,18 @@ class EditImage extends React.Component {
 
     handleSubmission = (event) => {
         event.preventDefault();
-        console.log(event.target.image);
+
         const formData = new FormData();
         if(this.state.title === "" || this.state.description === "") {
             alert("All fields need to be fill..");
             return;
         }
+
+        if(!isBase64(this.state.image)) {
+            this.setState({image: null});
+
+        }
+
         this.props.editImageHandler(this.state);
         this.setState({title:"", image: null, description:""});
         this.props.history.push("/");
